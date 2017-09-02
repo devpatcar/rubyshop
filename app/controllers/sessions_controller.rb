@@ -3,8 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_username(params[:username])
-    if user #&& user.authenticate(params[:password])
+    user = User.find_by(username: params[:session][:username].downcase)
+    #user = User.find_by_username(params[:username])
+    #if user #&& user.authenticate(params[:password])
+    if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       redirect_to '/admin', notice: "Logged in!"
     else
