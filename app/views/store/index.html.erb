@@ -1,6 +1,30 @@
-<h1>Store</h1>
-
-<div id="products">
-    <%= render @products %>
+<div id="products" class="row">
+    <%= render 'products' %>
 </div>
+<% if @allowPagination %>
+<nav aria-label="Page navigation" class="row">
+<ul class="pagination">
+  
+  <% if @isNotFirstPage %>
+  <li>
+  <%= link_to(content_tag(:span, "<<") , store_path(:page => @firstPage)) %>
+  </li>
+  <% end %>
+    
+  
+  <% for i in 1..@pageCount do %>
+    <li><%= link_to i, store_path(:page => i) %></li>
+  <% end %> 
+
+  <% if @isNotLastPage %>
+  <li>
+  <%= link_to(content_tag(:span, ">>") , store_path(:page => @lastPage)) %>
+  </li>
+  <% end %>
+    
+ 
+</ul>
+</nav>
+<% end %>
+
 

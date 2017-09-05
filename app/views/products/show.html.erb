@@ -24,6 +24,5 @@
   <strong>Stock:</strong>
   <%= @product.stock %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<button class="btn btn-success">Add to cart</button>
+<%= link_to 'Back', root_url %>

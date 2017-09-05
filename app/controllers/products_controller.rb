@@ -25,11 +25,11 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @products = Product.all
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        format.html { render :index, notice: 'Product was successfully created.' }
+        format.json { render :index, status: :created, location: @products }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -40,10 +40,11 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @products = Product.all
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        format.html { render :index, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @products }
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
