@@ -1,5 +1,14 @@
-<div id="products" class="row">
-    <%= render 'products' %>
+<div class="row">
+<div class="col-xs-12 text-right">
+<h1 class="cart-text"><%= render 'cart_text' %></h1>
+</div>
+</div>
+
+
+  <% @products.each do |product| %>
+    <%= render "product_row", product: product, order_item: @order_item %>
+  <% end %>
+
 </div>
 <% if @allowPagination %>
 <nav aria-label="Page navigation" class="row">

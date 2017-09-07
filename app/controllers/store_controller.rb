@@ -2,6 +2,7 @@ class StoreController < ApplicationController
     before_action :set_product, only: [:index]
     def index      
         
+        @order_item = current_order.order_items.new
         @allowPagination = false
         @isNotFirstPage = false
         @isNotLastPage = true  
