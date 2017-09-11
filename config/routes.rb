@@ -1,5 +1,5 @@
 Rails.application.routes.draw do   
-  root   'store#index'
+  root 'store#index', as: 'store_index'
      
   get    '/signup',  to: 'users#new'
   get    '/login',    to: 'sessions#new'

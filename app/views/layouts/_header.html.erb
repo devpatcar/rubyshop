@@ -1,6 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 <div class="container">
-  <%= link_to "The RubyShop", root_path, id: "logo" %>
+
+<%= link_to "The RubyShop", '#', id: "logo" %>
   <nav>
     <ul class="nav navbar-nav navbar-right">    
     <% if logged_in? %>   
@@ -16,5 +17,6 @@
       
     </ul>
   </nav>
+
 </div>
 </header>
