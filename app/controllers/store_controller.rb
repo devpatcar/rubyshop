@@ -1,14 +1,13 @@
 class StoreController < ApplicationController
-    before_action :set_product, only: [:index]
-    def index      
-        
-        @order_item = current_order.order_items.new
+    before_action :set_page, only: [:index]
+    def index                 
         @allowPagination = false
         @isNotFirstPage = false
         @isNotLastPage = true  
         @pageCount = (Product.count / 3.to_f).ceil         
         @offset = (Integer(@page)*3)-3  
         @products = Product.limit(3).offset(@offset)
+        @order_item = current_order.order_items.new
         if  Integer(@page) == 1
             @isNotFirstPage = false  
             @isNotLastPage = true         
@@ -30,7 +29,7 @@ class StoreController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_product
+  def set_page
     @page = params[:page]
     if @page == nil
         @page = 1

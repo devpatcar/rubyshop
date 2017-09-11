@@ -1,10 +1,10 @@
 class OrderItemsController < ApplicationController
 
-  def create
+  def create    
     @order = current_order   
-    @order_item = @order.order_items.new(order_item_params)
-    @order.save
-    session[:order_id] = @order.id  
+    @order_item = OrderItem.new(order_item_params)
+    #@order_item.save
+   
   end
 
   def update
