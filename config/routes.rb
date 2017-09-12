@@ -1,6 +1,6 @@
-Rails.application.routes.draw do   
+Rails.application.routes.draw do     
   root 'store#index', as: 'store_index'
-     
+
   get    '/signup',  to: 'users#new'
   get    '/login',    to: 'sessions#new'
   post   '/login',    to: 'sessions#create'
@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :products
+  resources :line_items
+  resources :carts
 end
