@@ -1,11 +1,6 @@
 class ProductsChannel < ApplicationCable::Channel
-  def self.broadcast(product)
-    broadcast_to(product)    
-    StoreController.render(root_path)
-  end
-  def subscribed   
-    @products = Product.all
-    stream_from @products.last
+  def subscribed
+    stream_from "products"
   end
 
   def unsubscribed

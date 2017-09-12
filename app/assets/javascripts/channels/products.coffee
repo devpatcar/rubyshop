@@ -5,6 +5,5 @@ App.products = App.cable.subscriptions.create "ProductsChannel",
   disconnected: ->
     # Called when the subscription has been terminated by the server
 
-  received: (data) ->   
-    document.getElementById("products").append data.product;    
-    
+  received: (data) ->
+   $(".store #main").html(data.html)

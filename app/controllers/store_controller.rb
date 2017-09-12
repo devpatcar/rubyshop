@@ -1,5 +1,7 @@
 class StoreController < ApplicationController
     #before_action :set_product, only: [:index]
+    include CurrentCart
+     before_action :set_cart
     def index      
         @products = Product.order(:name)
         #@allowPagination = false
