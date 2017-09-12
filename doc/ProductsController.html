@@ -286,6 +286,28 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#who_bought-instance_method" title="#who_bought (instance method)">#<strong>who_bought</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -650,12 +672,54 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="who_bought-instance_method">
+  
+    #<strong>who_bought</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_who_bought'>who_bought</span> 
+  <span class='ivar'>@product</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span> 
+  <span class='ivar'>@latest_order</span> <span class='op'>=</span> <span class='ivar'>@product</span><span class='period'>.</span><span class='id identifier rubyid_orders'>orders</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:updated_at</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span> 
+  <span class='kw'>if</span> <span class='id identifier rubyid_stale?'>stale?</span><span class='lparen'>(</span><span class='ivar'>@latest_order</span><span class='rparen'>)</span> 
+    <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span> 
+      <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_atom'>atom</span> 
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Tue Sep 12 23:20:59 2017 by
+  Generated on Wed Sep 13 00:12:58 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.3.3).
 </div>
