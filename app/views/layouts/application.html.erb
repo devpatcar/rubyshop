@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= render 'layouts/shim' %>
+    <%= render 'layouts/shim' %>   
   </head>
   <body  class='<%= controller.controller_name %>'>  
   <%= render 'layouts/header' %>
@@ -22,6 +22,7 @@
     <div class="container" id="main">   
      <%= yield %>
      <%= render 'layouts/footer' %>
-    </div>
+    </div>      
   </body>
+  
 </html>
