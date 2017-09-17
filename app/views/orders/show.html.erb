@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Order id</strong>
+  <%= @order.id %>
+<p>
   <strong>Name:</strong>
   <%= @order.name %>
 </p>
@@ -15,10 +18,12 @@
   <%= @order.email %>
 </p>
 
-<p>
-  <strong>Pay type:</strong>
-  <%= @order.pay_type %>
-</p>
+<strong>Products:</strong>
+<% @order.line_items.each do |line_item| %>
+  <p>
+    <%= line_item.quantity %>&times; , <%= line_item.product.name %>, <%= image_tag(line_item.product.image, :style => "height: 50px") %> , <%= line_item.product.description %> , <%= line_item.product.price %>     
+  </p> 
+<% end %>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', "/admin/orders" %>

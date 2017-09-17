@@ -24,7 +24,7 @@
 							<!-- Nav -->
 								<nav>
 									<ul>
-										<li><a href="#menu">Menu</a></li>
+										<li><a href="#menu">Menu</a></li>									
 									</ul>
 								</nav>
 
@@ -37,7 +37,7 @@
 						<ul>
 						   <% if logged_in? %>   
 									<li>
-									<%= link_to "Admin", '/admin' %>
+									<%= link_to "Admin", '/admin/products' %>
 								</li> 
 									<li>
 									<%= button_to "Log out", logout_path, method: :delete %>

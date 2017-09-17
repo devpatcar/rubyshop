@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     get :who_bought, on: :member
   end
 
-  post '/show_product/', to: 'store#show_product', as: 'show_product_path'
   get    '/signup',  to: 'users#new'
   get    '/login',    to: 'sessions#new'
   post   '/login',    to: 'sessions#create'
@@ -16,6 +15,9 @@ Rails.application.routes.draw do
   get    '/admin',   to: 'admin#index'
   post '/signup',  to: 'users#create'
   get    '/store',   to: 'store#index'
+  get    '/admin/products',   to: 'products#index'
+  get    '/admin/products/new', to: 'products#new'
+  get    '/admin/orders',   to: 'orders#index'
 
   resources :users
   resources :products  

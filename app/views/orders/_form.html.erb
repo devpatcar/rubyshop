@@ -19,6 +19,20 @@
 </div> <div class="field"> 
 <%= f.label :email %> 
 <%= f.email_field :email, size: 40 %>
+</div>
+ <div class="actions"> 
+ <%= f.submit 'Edit Order' %>
 </div> 
- <div class="actions"> <%= f.submit 'Place Order' %>
-</div> <% end %>
+<% end %>
+<strong>Products:</strong>
+
+<% order.line_items.each do |line_item| %>
+  <p>
+    <%= line_item.quantity %>&times; , <%= line_item.product.name %>, <%= image_tag(line_item.product.image, :style => "height: 50px") %> , <%= line_item.product.price %>     
+  </p>    
+ <%= link_to 'Edit Line', edit_line_item_path(line_item) %>
+ <%= button_to 'Remove Line', line_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+<% end %>
+
+
