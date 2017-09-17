@@ -1,0 +1,20 @@
+<section class="">  
+  <% cache product do %>
+    <article class="style1"> 
+      <span class="image">
+        <%= image_tag(product.image) %> 
+      </span>
+      <div class="product">
+        <h2><%= product.name %></h2>
+        <div class="content"> 
+          <p><%= sanitize(product.description) %></p>
+          <p><%= product.stock %></p>   
+          <p><span class="product-price"><%= number_to_currency(product.price) %></span></p>  
+          <button onclick="backFromProduct()">Back<button>
+          <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>                          
+        </div>
+      </div>        
+    </article> 
+  <% end %>    														
+</section>
+

@@ -2666,7 +2666,7 @@
 					z-index: 2;
 				}
 
-			.tiles article > a {
+			.tiles article > div {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
@@ -2701,19 +2701,19 @@
 				z-index: 3;
 			}
 
-				.tiles article > a > :last-child {
+				.tiles article > div > :last-child {
 					margin: 0;
 				}
 
-				.tiles article > a:hover {
+				.tiles article > div:hover {
 					color: #ffffff !important;
 				}
 
-				.tiles article > a h2 {
+				.tiles article > div h2 {
 					margin: 0;
 				}
 
-				.tiles article > a .content {
+				.tiles article > div .content {
 					-moz-transition: max-height 0.5s ease, opacity 0.5s ease;
 					-webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
 					-ms-transition: max-height 0.5s ease, opacity 0.5s ease;
@@ -2725,7 +2725,7 @@
 					opacity: 0;
 				}
 
-					.tiles article > a .content > :last-child {
+					.tiles article > div .content > :last-child {
 						margin-bottom: 0;
 					}
 

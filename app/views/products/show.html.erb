@@ -1,28 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<div class="inner">
+  <h1><strong>Name:</strong><%= @product.name %></h1>
+  <span class="image main">  <%= image_tag(@product.image) %> </span>
+  <p><strong>Description:</strong><%= @product.description %></p>
+  <p><strong>Price:</strong><span class="product-price"><%= number_to_currency(@product.price) %></span></p>
+  <p><strong>Stock:</strong><span class="product-price"><%= @product.stock %></span></p>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @product.image %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
-<button class="btn btn-success">Add to cart</button>
-<%= link_to 'Back', root_url %>
+ <%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true %> 
+<%= link_to 'Back', store_url %>

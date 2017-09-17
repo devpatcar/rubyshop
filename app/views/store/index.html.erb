@@ -1,49 +1,49 @@
-<p id="notice"><%= notice %></p> 
-<h1>Your Ruby Catalog</h1>
+              
+							<section class="tiles" id="all-products">
+              <% cache @products do %>
+                <% @products.each do |product| %> 
+                  <% cache product do %>
+                  <article class="style1"> 
+                    <span class="image">
+                      <%= image_tag(product.image) %> 
+                    </span>
+                    <div class="product">
+                      <h2><%= product.name %></h2>
+                      <div class="content">    
+                        <p><span class="product-price"><%= number_to_currency(product.price) %></span></p>  
+                        <%= link_to "Show", product %>                                        
+                      </div>
+                    </div>        
+                  </article> 
+                  <% end %>
+                <% end %>
+              <% end %>					
+							</section>
+								<% if @allowPagination %>
+							<nav aria-label="Page navigation" class="row">
+							<ul class="pagination">
 
-<% cache @products do %>
-<% @products.each do |product| %> 
-  <% cache product do %>
-  <div class="entry"> 
-  <%= image_tag(product.image) %> 
-  <h3>
-  <%= product.name %></h3> <%= sanitize(product.description) %>
-   <div class="price_line"> 
-   <span class="price"><%= number_to_currency(product.price) %></span>
-   <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
-   </div> </div> 
-   <% end %>
-   <% end %>
-   <% end %>
+							<% if @isNotFirstPage %>
+							<li>
+							<%= link_to(content_tag(:span, "<<") , store_path(:page => @firstPage)) %>
+							</li>
+							<% end %>
 
-<!--
-<div id="products" class="row">
-    <%= render 'products' %>
-</div>
-<% if @allowPagination %>
-<nav aria-label="Page navigation" class="row">
-<ul class="pagination">
-  
-  <% if @isNotFirstPage %>
-  <li>
-  <%= link_to(content_tag(:span, "<<") , store_path(:page => @firstPage)) %>
-  </li>
-  <% end %>
-    
-  
-  <% for i in 1..@pageCount do %>
-    <li><%= link_to i, store_path(:page => i) %></li>
-  <% end %> 
 
-  <% if @isNotLastPage %>
-  <li>
-  <%= link_to(content_tag(:span, ">>") , store_path(:page => @lastPage)) %>
-  </li>
-  <% end %>
+							<% for i in 1..@pageCount do %>
+							<li><%= link_to i, store_path(:page => i) %></li>
+							<% end %> 
+							<% if @isNotLastPage %>
+							<li>
+							<%= link_to(content_tag(:span, ">>") , store_path(:page => @lastPage)) %>
+							</li>
+							<% end %>
     
  
-</ul>
-</nav>
-<% end %>-->
+							</ul>
+							</nav>	
+								<% end %>	
+
+					
 
 

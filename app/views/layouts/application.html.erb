@@ -6,23 +6,76 @@
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= render 'layouts/shim' %>   
+    <%= render 'layouts/shim' %>  
   </head>
-  <body  class='<%= controller.controller_name %>'>  
-  <%= render 'layouts/header' %>
-  <div id="columns"> 
-  <div id="side">
-   <% if @cart %>   
-    <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>    
-    <%= render @cart %> 
-    <% end %>
-     <% end %> 
- </div> 
- </div>
-    <div class="container" id="main">   
-     <%= yield %>
-     <%= render 'layouts/footer' %>
-    </div>      
-  </body>
-  
+  <body class='<%= controller.controller_name %>'>
+  <!-- Wrapper -->
+
+<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="/" class="logo">
+									<span class="symbol"><%= image_tag "logo.svg" %></span><span class="title">RubyShop</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+						   <% if logged_in? %>   
+									<li>
+									<%= link_to "Admin", '/admin' %>
+								</li> 
+									<li>
+									<%= button_to "Log out", logout_path, method: :delete %>
+								</li> 
+								<% else %>
+								<li><a href="/">Shop</a></li>	
+									<li><%= link_to "Log in", login_path %></li>
+								<% end %> 						           
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>This is Phantom, a free, fully responsive site<br />
+								template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
+								<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+                <p id="notice"><%= notice %></p> 
+              </header>
+              <section>
+                <% if @cart %>   
+                  <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>    
+                    <%= render @cart %> 
+                  <% end %>
+                <% end %>                   
+              </section>
+    <%= yield %>
+    	</div>
+					</div>
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">														
+							<ul class="copyright">
+								<li>&copy; RubyShop. All rights reserved</li>
+							</ul>
+						</div>
+					</footer>
+			</div>				
+	</body>  
 </html>
