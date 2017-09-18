@@ -384,16 +384,18 @@
 37
 38
 39
-40</pre>
+40
+41</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='ivar'>@product</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_product_params'>product_params</span><span class='rparen'>)</span>
-  <span class='ivar'>@products</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
+  
   <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
     <span class='kw'>if</span> <span class='ivar'>@product</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+      <span class='ivar'>@products</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
       <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:index</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Product was successfully created.</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
       <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:index</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:created</span><span class='comma'>,</span> <span class='label'>location:</span> <span class='ivar'>@products</span> <span class='rbrace'>}</span>
     <span class='kw'>else</span>
@@ -433,16 +435,16 @@
       <pre class="lines">
 
 
-63
 64
 65
 66
 67
 68
-69</pre>
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@product</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
@@ -642,7 +644,6 @@
       <pre class="lines">
 
 
-44
 45
 46
 47
@@ -657,10 +658,11 @@
 56
 57
 58
-59</pre>
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='ivar'>@products</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -698,7 +700,6 @@
       <pre class="lines">
 
 
-71
 72
 73
 74
@@ -706,10 +707,11 @@
 76
 77
 78
-79</pre>
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_who_bought'>who_bought</span> 
   <span class='ivar'>@product</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span> 
@@ -730,7 +732,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 18 03:21:19 2017 by
+  Generated on Mon Sep 18 12:05:39 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.3.3).
 </div>

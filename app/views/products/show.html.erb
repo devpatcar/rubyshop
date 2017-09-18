@@ -9,7 +9,7 @@
   <p class="price">$124.00</p>                                
   <p class="buttons">
       <%= link_to 'Back', store_url, :class => 'btn-back' %> 
-      <% if product.stock > 0 %>
+      <% if @product.stock > 0 %>
       <%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true %>
       <% end %>
   </p>

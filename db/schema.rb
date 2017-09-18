@@ -55,11 +55,10 @@ ActiveRecord::Schema.define(version: 20170917214116) do
     t.string "name"
     t.text "description"
     t.string "image"
-    t.decimal "price", precision: 12, scale: 3
+    t.integer "price"
     t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "active"
   end
 
   create_table "users", force: :cascade do |t|

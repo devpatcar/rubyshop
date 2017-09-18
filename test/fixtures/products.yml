@@ -7,9 +7,9 @@ book:
   price: 10.50
   stock: 12
 
-nail:
-  name: Nail
+two:
+  name: Two
   description: Small nail
   image: http://mikemoir.com/mikemoir/wp-content/uploads/2015/06/MedRes_Product-presentation-2.jpg
-  price: 1.5
+  price:
   stock: 18

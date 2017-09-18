@@ -27,9 +27,10 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @products = Product.all
+    
     respond_to do |format|
       if @product.save
+        @products = Product.all
         format.html { render :index, notice: 'Product was successfully created.' }
         format.json { render :index, status: :created, location: @products }
       else

@@ -420,7 +420,7 @@
       <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:cart_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>nil</span>
       <span class='id identifier rubyid_respond_to'>respond_to</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span> 
         <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_store_index_url'>store_index_url</span> <span class='rbrace'>}</span>
-        <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_head'>head</span> <span class='symbol'>:no_content</span> <span class='rbrace'>}</span>
+        <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_json'>json</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_head'>head</span> <span class='symbol'>:no_content</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span> <span class='rbrace'>}</span>
     <span class='kw'>end</span> 
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -651,7 +651,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 18 03:21:18 2017 by
+  Generated on Mon Sep 18 12:05:39 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.3.3).
 </div>

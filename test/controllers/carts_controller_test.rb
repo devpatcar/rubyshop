@@ -23,16 +23,6 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to cart_url(Cart.last)
   end
 
-  test "should show cart" do
-    get cart_url(@cart)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_cart_url(@cart)
-    assert_response :success
-  end
-
   test "should update cart" do
     patch cart_url(@cart), params: { cart: {  } }
     assert_redirected_to cart_url(@cart)
@@ -43,6 +33,6 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
       delete cart_url(@cart)
     end
 
-    assert_redirected_to store_index_url
+    assert_response :success
   end
 end
