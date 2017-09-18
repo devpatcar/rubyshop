@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
-  layout "admin", except: [:new]
+  layout "admin", except: [:new,:create]
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: :new
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_order, only: [:show, :edit, :update, :destroy,:deliver]
+  
   # GET /orders
   # GET /orders.json
   def index
@@ -29,8 +29,13 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.add_line_items_from_cart(@cart)
-
+    @order.add_line_items_from_cart(@cart)  
+    @order.order_status_id = 1 
+    @order.line_items.each do |line_item|          
+      product = Product.find(line_item.product.id)   
+      product.stock = product.stock - line_item.quantity 
+      product.save           
+    end  
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
@@ -63,6 +68,11 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    @order.line_items.each do |line_item|          
+      product = Product.find(line_item.product.id)   
+      product.stock = product.stock + line_item.quantity 
+      product.save           
+    end  
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
@@ -70,7 +80,32 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
+  def deliver
+    @order.order_status_id = 3    
+      @order.line_items.each do |line_item|
+        item = LineItem.find(line_item.id)
+        item.quantity_deliver = 0
+        item.quantity_deliver = item.quantity_deliver + line_item.quantity  
+        item.save     
+        product = Product.find(line_item.product.id)   
+        product.stock = product.stock - line_item.quantity 
+        product.save           
+    end     
+    respond_to do |format|    
+    if @order.save             
+        OrderMailer.shipped(@order).deliver_later
+        format.html { redirect_to "/admin/orders", notice:
+          'Order are deliverd.' }      
+          format.json { render :show, status: :ok, location: @order } 
+      else
+        format.html { redirect_to "/admin/orders", notice:
+        'Order can not be deliverd.' }   
+        format.json { render json: @order.errors, status: :unprocessable_entity }     
+      end   
+    end
+  end
+
+  private    
     def ensure_cart_isnt_empty
       if @cart.line_items.empty?
         redirect_to store_index_url, notice: 'Your cart is empty'

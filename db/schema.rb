@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912212720) do
+ActiveRecord::Schema.define(version: 20170917214116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20170912212720) do
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
     t.bigint "order_id"
+    t.integer "deliveryCount"
+    t.integer "quantity_deliver"
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
@@ -45,6 +47,8 @@ ActiveRecord::Schema.define(version: 20170912212720) do
     t.integer "pay_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_status_id"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -69,4 +73,5 @@ ActiveRecord::Schema.define(version: 20170912212720) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "order_statuses"
 end

@@ -1,29 +1,35 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Order id</strong>
-  <%= @order.id %>
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
-
-<strong>Products:</strong>
+<section>
+<h1>Order</h1>
+<ul class="list-group">
+  <li class="list-group-item"> <strong>Order id:</strong>
+  <%= @order.id %></li>
+  <li class="list-group-item"><strong>Name:</strong>
+  <%= @order.name %></li>
+  <li class="list-group-item"><strong>Address:</strong>
+  <%= @order.address %></li>
+  <li class="list-group-item"><strong>Email:</strong>
+  <%= @order.email %></li>  
+</ul>
+</section>
+<section>
+<h2>Products:</h2>
 <% @order.line_items.each do |line_item| %>
-  <p>
-    <%= line_item.quantity %>&times; , <%= line_item.product.name %>, <%= image_tag(line_item.product.image, :style => "height: 50px") %> , <%= line_item.product.description %> , <%= line_item.product.price %>     
-  </p> 
+<h3><%= line_item.product.name %></h3>
+<ul class="list-group col-md-6 col-lg-6">  
+  <li class="list-group-item">Quantity: <%= line_item.quantity %>&times; </li>
+  <li class="list-group-item">Image: <%= image_tag(line_item.product.image, :style => "height: 50px") %> </li>
+</ul>
+<ul class="list-group col-md-6 col-lg-6">
+  <li class="list-group-item">Price: <%= line_item.product.price %></li>
+  <li class="list-group-item">Stock: <%= line_item.product.price %></li>
+  <% if @order.order_status.id == 1 %>
+    <li class="list-group-item">Delivered: 0</li>
+    <% else %>
+    <li class="list-group-item">Delivered: <%= line_item.quantity %></li>
+    <% end %>   
+</ul>  
 <% end %>
+</section>
+<%= link_to 'Back', "/admin/orders", :class => 'btn btn-danger' %>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', "/admin/orders" %>

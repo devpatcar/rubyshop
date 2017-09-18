@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<div class="inner">
-  <h1><strong>Name:</strong><%= @product.name %></h1>
-  <span class="image main">  <%= image_tag(@product.image) %> </span>
-  <p><strong>Description:</strong><%= @product.description %></p>
-  <p><strong>Price:</strong><span class="product-price"><%= number_to_currency(@product.price) %></span></p>
-  <p><strong>Stock:</strong><span class="product-price"><%= @product.stock %></span></p>
-</div>
+<div class="box text-center">
+  <h1><%= @product.name %></h1>
+  <div>
+  <%= image_tag(@product.image, class: 'product-image') %>
+  </div>
+  <p><%= @product.description %></p>
+  <p class="price">$124.00</p>                                
+  <p class="buttons">
+      <%= link_to 'Back', store_url, :class => 'btn-back' %> 
+      <% if product.stock > 0 %>
+      <%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true %>
+      <% end %>
+  </p>
+  </div>
 
- <%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true %> 
-<%= link_to 'Back', store_url %>

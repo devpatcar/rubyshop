@@ -11,11 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.min
-//= require skel.min
-//= require main
-//= require util
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
+//= require skel.min
+//= require main
+//= require util
 //= require_tree .

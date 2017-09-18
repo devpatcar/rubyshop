@@ -9,19 +9,20 @@
 </ul> 
 </div> 
 <% end %>
-<div class="field"> 
+<div class="form-group"> 
 <%= f.label :name %> 
-<%= f.text_field :name, size: 40 %>
+<%= f.text_field :name, size: 40, class: 'form-control' %>
 </div> 
-<div class="field"> 
+<div class="form-group"> 
 <%= f.label :address %> 
-<%= f.text_area :address, rows: 3, cols: 40 %>
-</div> <div class="field"> 
+<%= f.text_area :address, class: 'form-control', rows: 3, cols: 40 %>
+</div> <div class="form-group"> 
 <%= f.label :email %> 
-<%= f.email_field :email, size: 40 %>
+<%= f.email_field :email, size: 40, class: 'form-control' %>
 </div>
  <div class="actions"> 
- <%= f.submit 'Edit Order' %>
+ <%= link_to 'Back', orders_path, :class => 'btn btn-danger' %>
+ <%= f.submit 'Send', :class => 'btn btn-success pull-right' %>
 </div> 
 <% end %>
 <strong>Products:</strong>
@@ -30,8 +31,8 @@
   <p>
     <%= line_item.quantity %>&times; , <%= line_item.product.name %>, <%= image_tag(line_item.product.image, :style => "height: 50px") %> , <%= line_item.product.price %>     
   </p>    
- <%= link_to 'Edit Line', edit_line_item_path(line_item) %>
- <%= button_to 'Remove Line', line_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+ <%= button_to 'Remove Product', line_item, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+ <%= link_to 'Edit Product', edit_line_item_path(line_item), :class => 'btn btn-success' %> 
 </div>
 <% end %>
 

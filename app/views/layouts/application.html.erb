@@ -3,8 +3,9 @@
   <head>
     <title>Ruby Shop</title>
     <%= csrf_meta_tags %>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all',
-                                              'data-turbolinks-track': 'reload' %>
+                                              'data-turbolinks-track': 'reload' %>																					
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>  
   </head>
@@ -17,9 +18,9 @@
 						<div class="inner">
 
 							<!-- Logo -->
-								<a href="/" class="logo">
+								<%= link_to store_path , :class => 'logo' do %>
 									<span class="symbol"><%= image_tag "logo.svg" %></span><span class="title">RubyShop</span>
-								</a>
+								<% end %>
 
 							<!-- Nav -->
 								<nav>
@@ -43,8 +44,8 @@
 									<%= button_to "Log out", logout_path, method: :delete %>
 								</li> 
 								<% else %>
-								<li><a href="/">Shop</a></li>	
-									<li><%= link_to "Log in", login_path %></li>
+								<li><%= link_to "Shop", store_path %></li>	
+								<li><%= link_to "Log in", login_path %></li>
 								<% end %> 						           
 						</ul>
 					</nav>
@@ -53,9 +54,7 @@
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>This is Phantom, a free, fully responsive site<br />
-								template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
-								<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+								<h1>Welcome to the RubyShop</h1>								
                 <p id="notice"><%= notice %></p> 
               </header>
               <section>

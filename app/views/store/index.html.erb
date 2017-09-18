@@ -3,16 +3,25 @@
               <% cache @products do %>
                 <% @products.each do |product| %> 
                   <% cache product do %>
-                  <article class="style1"> 
+                  <article class="style2"> 
                     <span class="image">
                       <%= image_tag(product.image) %> 
                     </span>
                     <div class="product">
+										<% if product.stock > 0 %>
+											<%= link_to product do %> 
                       <h2><%= product.name %></h2>
-                      <div class="content">    
-                        <p><span class="product-price"><%= number_to_currency(product.price) %></span></p>  
-                        <%= link_to "Show", product %>                                        
+                      <div class="content"> 										
+                        <p><span class="product-price"><%= number_to_currency(product.price) %></span></p>                                                           
                       </div>
+											<% end %> 
+										<% else %>
+										<h2><%= product.name %></h2>
+                      <div class="content"> 	
+												<p>Product out of order</p>									
+                        <p><span class="product-price"><%= number_to_currency(product.price) %></span></p>                                                           
+                      </div>
+										<% end %>     
                     </div>        
                   </article> 
                   <% end %>
@@ -43,6 +52,8 @@
 							</ul>
 							</nav>	
 								<% end %>	
+								<nav aria-label="Page navigation">
+  
 
 					
 

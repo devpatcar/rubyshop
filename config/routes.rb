@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get    '/admin/products',   to: 'products#index'
   get    '/admin/products/new', to: 'products#new'
   get    '/admin/orders',   to: 'orders#index'
+  post "/deliver" , to: "orders#deliver"
 
   resources :users
   resources :products  

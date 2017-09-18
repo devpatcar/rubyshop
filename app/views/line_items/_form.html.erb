@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :product_id %>  
-    <%= form.collection_select :product_id, @products, :id, :name %>    
+    <%= form.collection_select :product_id, @products, :id, :name, class: 'form-control' %>    
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :quantity %>
-    <%= form.text_field :quantity %>
+    <%= form.text_field :quantity, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Send', :class => 'btn btn-success pull-right' %>
   </div>
 <% end %>

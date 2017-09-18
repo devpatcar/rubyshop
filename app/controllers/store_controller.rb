@@ -7,9 +7,9 @@ class StoreController < ApplicationController
         @allowPagination = false
         @isNotFirstPage = false
         @isNotLastPage = true  
-        @pageCount = (Product.count / 1.to_f).ceil         
-        @offset = (Integer(@page)*1)-1  
-        @products = Product.limit(1).offset(@offset).order(:name)
+        @pageCount = (Product.count / 10.to_f).ceil         
+        @offset = (Integer(@page)*10)-10  
+        @products = Product.limit(10).offset(@offset).order(:name)
         if  Integer(@page) == 1
             @isNotFirstPage = false  
             @isNotLastPage = true         
@@ -22,7 +22,7 @@ class StoreController < ApplicationController
             @isNotFirstPage = true
             @isNotLastPage = false 
         end
-        if  Product.count > 1
+        if  Product.count > 10
             @allowPagination = true          
         end  
         @firstPage = Integer(@page)-1
